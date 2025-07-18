@@ -1,0 +1,25 @@
+﻿# Executáveis
+*.exe
+*.dll
+*.test
+*.out
+
+# Logs
+*.log
+
+# Dependências
+vendor/
+node_modules/
+
+# IDEs
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.db
+*.tmp
+*.backup

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Clientes</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app" class="box">
+    <form @submit.prevent="salvarCliente">
+      <fieldset>
+        <legend><b>CADASTRO DE CLIENTES</b></legend>
+        <div class="inputbox">
+          <input type="text" v-model="nome" class="inputUser" required />
+          <label>NOME COMPLETO</label>
+        </div>
+        <div class="inputbox">
+          <input type="email" v-model="email" class="inputUser" required />
+          <label>EMAIL</label>
+        </div>
+        <div class="inputbox">
+          <input type="text" v-model="cpf" class="inputUser" required />
+          <label>CPF</label>
+        </div>
+        <div class="inputbox">
+          <input type="date" v-model="nascimento" class="inputUser" required />
+          <label>DATA DE NASCIMENTO</label>
+        </div>
+        <div class="inputbox">
+          <input type="tel" v-model="telefone" class="inputUser" />
+          <label>TELEFONE</label>
+        </div>
+        <button type="submit" id="btnCadastrar">Cadastrar</button>
+      </fieldset>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

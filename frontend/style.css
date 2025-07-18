@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    background-image: url('img/tecmise.jpg');
+    background-size: contain;
+    background-position: 65% top;
+    background-repeat: no-repeat;
+}
+.box {
+    margin: 70px 70px 0 auto; 
+    background: #fff;
+    padding: 32px 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    min-width: 350px;
+    max-width: 400px;
+    width: 100%;
+}
+fieldset {
+    border: none;
+}
+@font-face {
+    font-family: 'An Awesome';
+    src: url('fonts/AnAwesome.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+legend {
+    font-size: 1.9em;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-family: 'An Awesome';
+}
+.inputbox {
+    position: relative;
+    margin-bottom: 25px;
+}
+.inputbox label {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    color: #888;
+    pointer-events: none;
+    transition: 0.2s;
+    background: transparent;
+    padding: 0 4px;
+    font-weight: bold;
+    font-family: 'An Awesome';
+}
+.inputUser {
+    width: 100%;             
+    padding: 12px 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    background: none;
+    box-sizing: border-box; 
+    font-family: arial;
+    
+}
+.inputUser:focus + label,
+.inputUser:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 3px;
+    font-size: 0.85em;
+    color: #333 ;
+    background:transparent;
+
+}
+
+input[type="date"].inputUser::-webkit-calendar-picker-indicator {
+    width: 15px;
+    height: 15px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #193564;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'An Awesome';
+}
+button[type="submit"]:hover {
+    background: #0b84d1;
+}
+

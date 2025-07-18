@@ -1,0 +1,39 @@
+# Sistema de Cadastro de Clientes - Full Stack
+
+## 🎯 Sobre o Projeto
+Sistema completo para gerenciamento de clientes com validações avançadas, máscaras automáticas e API REST robusta.
+
+## 🚀 Tecnologias Utilizadas
+- **Frontend:** Vue.js 3, HTML5, CSS3, JavaScript ES6+
+- **Backend:** Go (Golang), Gin Framework, GORM
+- **Banco:** PostgreSQL
+- **API:** REST com validações duplas
+
+## ✨ Funcionalidades
+- ✅ Cadastro com validação de CPF brasileiro
+- ✅ Máscaras automáticas (CPF/telefone)
+- ✅ Email único no sistema
+- ✅ Busca e ordenação em tempo real
+- ✅ Edição inline com validações
+- ✅ API REST completa (CRUD)
+
+## 🎬 Demonstração
+[Link para vídeo ou screenshots]
+
+## 🏃‍♂️ Como Executar
+```bash
+# Backend
+cd backend
+go run main.go
+
+# Frontend
+Abrir Index.html no navegador
+```
+
+## 📊 Competências Demonstradas
+- Desenvolvimento Full Stack
+- Validações avançadas (algoritmo CPF)
+- Arquitetura MVC
+- Integração Frontend/Backend
+- Banco de dados relacional
+- API REST design

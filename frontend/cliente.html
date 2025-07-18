@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clientes Cadastrados</title>
+  <link rel="stylesheet" href="cliente.css" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app" class="box">
+    <h2>Clientes Cadastrados</h2>
+    
+    <div style="margin-bottom: 20px;">
+      <input 
+        v-model="termoBusca" 
+        type="text" 
+        placeholder="Buscar por nome ou email..." 
+        style="width: 300px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;"
+      >
+      <button v-if="termoBusca" @click="limparBusca" style="margin-left: 10px;">Limpar</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th @click="ordenarPor('nome')" style="cursor: pointer;">
+            Nome
+            <span v-if="ordenacao.campo === 'nome'">
+              {{ ordenacao.direcao === 'asc' ? '↑' : '↓' }}
+            </span>
+          </th>
+          <th @click="ordenarPor('email')" style="cursor: pointer;">
+            Email
+            <span v-if="ordenacao.campo === 'email'">
+              {{ ordenacao.direcao === 'asc' ? '↑' : '↓' }}
+            </span>
+          </th>
+          <th>CPF</th>
+          <th>Nascimento</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="cliente in clientesFiltrados" :key="cliente.cpf">
+          <td v-if="editandoCliente && editandoCliente.cpf === cliente.cpf">
+            <input 
+              v-model="editandoCliente.nome" 
+              type="text" 
+              style="width: 100%; padding: 4px;"
+            >
+          </td>
+          <td v-else>{{ cliente.nome }}</td>
+
+          <td v-if="editandoCliente && editandoCliente.cpf === cliente.cpf">
+            <input 
+              v-model="editandoCliente.email" 
+              type="email" 
+              style="width: 100%; padding: 4px;"
+            >
+          </td>
+          <td v-else>{{ cliente.email }}</td>
+
+          <td v-if="editandoCliente && editandoCliente.cpf === cliente.cpf">
+            <input 
+              v-model="editandoCliente.cpf" 
+              @input="aplicarMascaraCPF"
+              type="text" 
+              maxlength="14"
+              placeholder="000.000.000-00"
+              style="width: 100%; padding: 4px;"
+            >
+          </td>
+          <td v-else>{{ formatarCPF(cliente.cpf) }}</td>
+
+          <td v-if="editandoCliente && editandoCliente.cpf === cliente.cpf">
+            <input 
+              v-model="editandoCliente.nascimento" 
+              type="date" 
+              style="width: 100%; padding: 4px;"
+            >
+          </td>
+          <td v-else>{{ cliente.nascimento }}</td>
+
+          <td v-if="editandoCliente && editandoCliente.cpf === cliente.cpf">
+            <input 
+              v-model="editandoCliente.telefone" 
+              @input="aplicarMascaraTelefone"
+              type="tel" 
+              maxlength="15"
+              placeholder="(00) 00000-0000"
+              style="width: 100%; padding: 4px;"
+            >
+          </td>
+          <td v-else>{{ formatarTelefone(cliente.telefone) }}</td>
+
+          <td>
+            <div v-if="editandoCliente && editandoCliente.cpf === cliente.cpf" style="display: flex; gap: 5px;">
+              <button @click="salvarEdicao" style="background: #28a745; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer;">
+                Salvar
+              </button>
+              <button @click="cancelarEdicao" style="background: #6c757d; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer;">
+                Cancelar
+              </button>
+            </div>
+            <div v-else style="display: flex; gap: 5px;">
+              <button @click="editarCliente(cliente)" style="background: #007bff; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer;">
+                Editar
+              </button>
+              <button @click="removerCliente(cliente)" style="background: #dc3545; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer;">
+                Remover
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div v-if="clientesFiltrados.length === 0" style="text-align: center; padding: 20px; color: #666;">
+      Nenhum cliente encontrado.
+    </div>
+
+    <div style="margin-top: 20px;">
+      <a href="Index.html" style="background: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+        Cadastrar Novo Cliente
+      </a>
+    </div>
+  </div>
+
+  <script src="cliente.js"></script>
+</body>
+</html>
